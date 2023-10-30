@@ -1,7 +1,7 @@
 from typing import Dict, Tuple
-from enum import Enum
+from enum import IntEnum
 
-class CubeFace(Enum):
+class CubeFace(IntEnum):
     FRONT = 0
     RIGHT = 1
     BACK = 2
@@ -20,7 +20,7 @@ k_opposite_face_table: Dict[CubeFace, CubeFace] = {
 }
 
 
-class CoordinateSystem(Enum):
+class CoordinateSystem(IntEnum):
     REFERENCE = 0
     PYTORCH3D = 1
     OPENCV = 2
@@ -37,7 +37,7 @@ def split_axes_convention(convention: str) -> Tuple[CubeFace, CubeFace, CubeFace
     assert len(splits) == 3
     for split in splits:
         assert split in ['FRONT', 'BACK', 'LEFT', 'RIGHT', 'UP', 'DOWN']
-    return CubeFace(splits[0]), CubeFace(splits[1]), CubeFace(splits[2])
+    return CubeFace[splits[0]], CubeFace[splits[1]], CubeFace[splits[2]]
 
 
 def get_reference_axes(ref_convention: str) -> Dict[CubeFace, Tuple[float, float, float]]:
