@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Final
+from typing import Dict, Tuple
 from enum import Enum
 
 class CubeFace(Enum):
